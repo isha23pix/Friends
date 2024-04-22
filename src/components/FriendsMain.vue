@@ -70,7 +70,7 @@ export default {
       this.showLeftPanel = window.innerWidth >= smBreakpoint;
     },
     updateSelectedChat(chat) {
-      console.log('Selected chat:', chat.profileImage);
+      console.log('Selected chat:', chat.friend_photo);
       this.selectedChat = chat; // Update selectedChat when a contact is clicked
     }
   },

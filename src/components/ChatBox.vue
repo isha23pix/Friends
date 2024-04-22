@@ -11,11 +11,11 @@
                 class="NeedAWallet"
                 loading="lazy"
                 alt=""
-                :src="selectedChat.profileImage"
+                :src="selectedChat.friend_photo"
               />
               <div class="frameWrapper">
                   <!-- <h1 class="anil">Anil</h1>         -->
-                  <h1 class="anil">{{ selectedChat.name }}</h1>        
+                  <h1 class="anil">{{ selectedChat.friend_name }}</h1>        
               </div>
             </div>
             <div class="moreOptions">
@@ -33,7 +33,7 @@
 
 <!-- chat section -->
 <div class="chat-container"> 
-  <div class="message-container"> 
+  <!-- <div class="message-container"> 
       <div class="message sender-message"> 
         Hello there!
         </div>
@@ -43,6 +43,9 @@
       <div class="message sender-message">
           I am fine How are you?
       </div>
+    </div> -->
+    <div v-for="(message, index) in messages" :key="index" :class="['message', message.sender === 'me' ? 'sender-message' : 'receiver-message']">
+      {{ message.content }}
     </div>
   </div>
 
@@ -66,17 +69,36 @@ import { defineComponent } from "vue";
 
    export default defineComponent({
      name: "ChatBox",
+     data() {
+    return {
+      messages: []
+    };
+  },
      props: {
     selectedChat: {
       type: Object,
       required: true
     }
   },
-  mounted() {
-    console.log("selectedChat:", this.selectedChat);
-  }
+  // mounted() {
+  //   console.log("selectedChat:", this.selectedChat);
+  // }
 
-  
+  mounted() {
+    this.loadMessages();
+  },
+  methods: {
+    async loadMessages() {
+      try {
+        const response = await fetch('/data.JSON');
+        const data = await response.json();
+        this.messages = data;
+        console.log(data);
+      } catch (error) {
+        console.error('Error loading messages:', error);
+      }
+    }
+  }
    });
 </script>
 <style>
