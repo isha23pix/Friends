@@ -31,13 +31,13 @@
             </v-row>
           </v-toolbar>
       </v-card>
-          <ContactList/>
+          <ContactList @update-chat-box="updateSelectedChat"/>
         </div>
       </v-col>
 
       <v-col :cols="showLeftPanel ? 8 : 12">
         <div class="right-panel">
-          <ChatBox/>
+          <ChatBox :selectedChat="selectedChat"/>
         </div>
       </v-col>
     </v-row>
@@ -55,6 +55,7 @@ export default {
   },
   data: () => ({
     showLeftPanel: true, // Initially show 
+    selectedChat: null // Initialize selectedChat
   }),
   mounted() {
     this.handleResize();
@@ -68,6 +69,10 @@ export default {
       const smBreakpoint = 960; //width for 'sm' in Vuetify
       this.showLeftPanel = window.innerWidth >= smBreakpoint;
     },
+    updateSelectedChat(chat) {
+      console.log('Selected chat:', chat.profileImage);
+      this.selectedChat = chat; // Update selectedChat when a contact is clicked
+    }
   },
 }
 </script>

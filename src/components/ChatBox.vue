@@ -1,7 +1,8 @@
 <template>
-    <div class="chatList">
+    <div class="chatList" v-if="selectedChat">
 <!-- top bar in personal chat -->
-<div class="chatEntry">
+<div class="chatEntry" >
+<!-- <div class="chatEntry"> -->
       <div class="contactDetails">
           <div class="frameParent">
             <!-- image and icon -->
@@ -10,10 +11,11 @@
                 class="NeedAWallet"
                 loading="lazy"
                 alt=""
-                src="/Friends/ellipse-11@2x.png"
+                :src="selectedChat.profileImage"
               />
               <div class="frameWrapper">
-                  <h1 class="anil">Anil</h1>        
+                  <!-- <h1 class="anil">Anil</h1>         -->
+                  <h1 class="anil">{{ selectedChat.name }}</h1>        
               </div>
             </div>
             <div class="moreOptions">
@@ -24,9 +26,9 @@
               />
             </div>
           </div>
-        
-        <div class="separator" />
-      </div>
+          <hr >
+
+        </div>
 </div>
 
 <!-- chat section -->
@@ -64,6 +66,16 @@ import { defineComponent } from "vue";
 
    export default defineComponent({
      name: "ChatBox",
+     props: {
+    selectedChat: {
+      type: Object,
+      required: true
+    }
+  },
+  mounted() {
+    console.log("selectedChat:", this.selectedChat);
+  }
+
   
    });
 </script>
@@ -93,13 +105,13 @@ import { defineComponent } from "vue";
     padding: 0px 0px 0px var(--padding-7xs);
     box-sizing: border-box;
     max-width: 100%;
+    margin: 0%;
+    /* background-color: aqua; */
   }
   .contactDetails {
     flex: 1;
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
-    /* justify-content: flex-start; */
     gap: var(--gap-xl-5);
     max-width: 100%;
   }
@@ -135,6 +147,9 @@ import { defineComponent } from "vue";
     border-radius: 50%;
     object-fit: cover;
     z-index: 3;
+    /* border-radius: 50%; 
+  width: 40px; 
+  height: 40px;  */
   }
   .anil {
   top: -11px;
@@ -170,15 +185,7 @@ import { defineComponent } from "vue";
     justify-content: flex-end;
     padding: 0px 0px var(--padding-mid);
   }
-  .separator {
-    width: 876px;
-    height: 1px;
-    position: relative;
-    border-top: 1px solid var(--color-darkgray);
-    box-sizing: border-box;
-    max-width: 100%;
-    z-index: 3;
-  }
+ 
 
 
   /* chat window */

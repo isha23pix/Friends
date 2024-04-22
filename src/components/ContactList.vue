@@ -84,6 +84,14 @@
          },
        ]
      };
+   },
+   methods:{
+    openChat(chat) {
+      // Here you can emit an event or directly call a method in the parent component
+      // to update the profile icon and name in the ChatBox component
+      console.log('Selected chat:', chat);
+      this.$emit('update-chat-box', chat);
+    }
    }
      }
  </script>
