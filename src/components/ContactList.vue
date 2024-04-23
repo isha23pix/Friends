@@ -147,22 +147,5 @@ export default {
   margin-bottom: 8px;
 }
 
-::v-deep .v-avatar img {
-  border-radius: 50%; /* Makes the image round */
-  width: 40px; /* Controls the width of the image */
-  height: 40px; /* Controls the height of the image */
-}
 
-.v-list-item-action-text {
-  margin-right: 10px;
-}
-
-
-.v-list-item {
-  align-items: center; /* Ensures vertical alignment is centered */
-}
-
-.custom-time {
-  color: #555; /* Change the color of the time text */
-}
 </style>
