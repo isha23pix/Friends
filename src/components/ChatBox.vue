@@ -121,7 +121,7 @@ export default defineComponent({
   /* height:auto; */
   padding: var(--padding-10xl) var(--padding-4xl) var(--padding-11xl)
     var(--padding-15xl);
-  height: 635px;
+  height: 744px;
 }
 /* profile and top  bar */
 .chatEntry {
