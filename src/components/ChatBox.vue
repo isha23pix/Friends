@@ -41,14 +41,14 @@
     </div> -->
     <div class="message-container">
       <div
-        v-for="(message, index) in messages"
+        v-for="(content, index) in messages"
         :key="index"
         :class="[
           'message',
-          message.sender === 'me' ? 'receiver-message' : 'sender-message',
+          content.s_id === 1  ? 'sender-message' : 'receiver-message',
         ]"
       >
-        {{ message.content }}
+        {{ content.message }}
       </div>
     </div>
     </div>
@@ -79,6 +79,10 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    currentUserID: {
+      type: Number,
+      required: true,
+    }
   },
   // mounted() {
   //   console.log("selectedChat:", this.selectedChat);
@@ -99,6 +103,7 @@ export default defineComponent({
         console.error("Error loading messages:", error);
       }
     },
+ 
   },
 });
 </script>
