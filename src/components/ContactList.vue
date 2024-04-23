@@ -142,7 +142,7 @@ export default {
   height: 100%;
 }
 .v-container, .v-row, .v-col {
-  padding: 0;
+  padding: 4px;
   margin: 0;
 }
 .chatcontent{
