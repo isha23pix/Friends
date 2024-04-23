@@ -1,6 +1,4 @@
 <template>
-  <!-- <v-container fluid> -->
-    <!-- <v-list> -->
       <v-container class="full-height" fluid>
       <v-row no-gutters class="full-height">
       <v-col cols="12">
@@ -43,11 +41,11 @@
                         <v-icon color="grey">mdi-message</v-icon>
                       </v-badge>
                     </div>
-                    <div v-else>
-                    <!-- <v-icon :color="chat.seen ? '6e00ff' : 'default'">
+                    <!--<div v-else>
+                     <v-icon :color="chat.seen ? '6e00ff' : 'default'">
                       {{ chat.seen ? 'mdi-check-all' : 'mdi-check' }}
-                    </v-icon> -->
-                  </div>
+                    </v-icon> 
+                  </div>-->
                   </v-list-item-action>
                   <!-- <v-list-item-action-text class="custom-time">{{ chat.time }}</v-list-item-action-text> -->
                 </div>
@@ -106,7 +104,7 @@ export default {
 }
 .v-list {
   background-color: #ffffff;
-  border-radius: 0.25rem;
+  border-radius: 0.24rem;
   margin: 0;
   padding: 0;
   overflow-y: auto;
@@ -140,12 +138,7 @@ export default {
   border-radius: 0px;
   box-shadow: none;
 }
-.v-container {
-  border-radius: 5px;
-}
-.v-list-item {
-  margin-bottom: 8px;
-}
+
 
 
 </style>
