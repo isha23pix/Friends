@@ -1,6 +1,10 @@
 <template>
-  <v-container fluid>
-    <v-list>
+  <!-- <v-container fluid> -->
+    <!-- <v-list> -->
+      <v-container class="full-height" fluid>
+      <v-row no-gutters class="full-height">
+      <v-col cols="12">
+       <v-list class="scrollable-list">
       <v-card
         @click="openChat(chat)"
         v-for="chat in chats"
@@ -17,8 +21,8 @@
             </v-col>
 
             <!-- Name and Message Column -->
-            <v-col cols="4">
-              <v-list-item-content>
+            <v-col class="chatcontent" cols="6">
+              <v-list-item-content align="left">
                 <v-list-item-title>{{ chat.friend_name }}</v-list-item-title>
                 <v-list-item-subtitle>{{
                   chat.last_message
@@ -27,7 +31,7 @@
             </v-col>
 
             <!-- Seen/Unseen Icon and Time -->
-            <v-col cols="4">
+            <v-col cols="2">
               <v-row justify="end">
                 <div class="justify-self-end">
                   <v-list-item-action class="me-1">
@@ -53,6 +57,8 @@
         </v-card-actions>
       </v-card>
     </v-list>
+    </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -91,6 +97,49 @@ export default {
 </script>
 
 <style scoped>
+.full-height {
+  height: 70vh; 
+}
+.scrollable-list {
+  overflow-y: auto; 
+  height: 100%; 
+}
+.v-list {
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  height: 100%;
+}
+.v-container, .v-row, .v-col {
+  padding: 0;
+  margin: 0;
+}
+.chatcontent{
+  margin-left: 1.25rem;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* .v-list-item {
+  margin-bottom: 8px;
+} */
+.v-avatar img {
+  border-radius: 50%; 
+  width: 40px; 
+  height: 40px; 
+}
+/* .v-list-item-action-text {
+  margin-right: 10px;
+} */
+.v-card {
+  background-color: #ffffff;
+  padding-top: 8px;
+  border-bottom: 1px solid #b4abab;
+  border-radius: 0px;
+  box-shadow: none;
+}
 .v-container {
   border-radius: 5px;
 }
@@ -108,10 +157,6 @@ export default {
   margin-right: 10px;
 }
 
-.v-card {
-  background-color: #ffffff;
-  padding-top: 8px;
-}
 
 .v-list-item {
   align-items: center; /* Ensures vertical alignment is centered */
