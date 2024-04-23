@@ -7,6 +7,7 @@
         @click="openChat(chat)"
         v-for="chat in chats"
         :key="chat.id"
+        :class="{ 'selected-chat': chat.c_id === selectedChatId  }"
         two-line
       >
         <v-card-actions>
@@ -21,8 +22,8 @@
             <!-- Name and Message Column -->
             <v-col class="chatcontent" cols="6">
               <v-list-item-content align="left">
-                <v-list-item-title>{{ chat.friend_name }}</v-list-item-title>
-                <v-list-item-subtitle>{{
+                <v-list-item-title class="friendName">{{ chat.friend_name }}</v-list-item-title>
+                <v-list-item-subtitle class="lastMessage">{{
                   chat.last_message
                 }}</v-list-item-subtitle>
               </v-list-item-content>
@@ -67,6 +68,7 @@ export default {
   data() {
     return {
       chats: [],
+      selectedChatId: null, 
     };
   },
   methods: {
@@ -74,8 +76,16 @@ export default {
       // Here you can emit an event or directly call a method in the parent component
       // to update the profile icon and name in the ChatBox component
       // console.log("Selected chat:", chat);
+
+        console.log("chat.id ",this.selectedChatId);
+        console.log("chat.id ", chat.c_id);
+      this.selectedChatId = chat.c_id; 
       this.$emit("update-chat-box", chat);
     },
+    // chatSelected(chat) {
+    //   // Check if the chat's ID matches the ID of the selected chat
+    //   return chat.c_id === this.selectedChatId;
+    // },
     async getAllConversationsData() {
       await axios
         .get(`http://localhost:3000/api/friends/getMyAllConversations/2`)
@@ -95,13 +105,34 @@ export default {
 </script>
 
 <style scoped>
+
 .full-height {
   height: 70vh; 
 }
 .scrollable-list {
   overflow-y: auto; 
   height: 100%; 
+  /* position: absolute; */
+    /* top: 159px; */
+    /* left: 69px; */
+    background-color: var(--color-white);
+    box-shadow: 0px 4px 5px 2px rgba(241, 202, 243, 0.38);
+   
+ 
 }
+.friendName{
+  font-family: var(--font-roboto);
+   font-weight: 600;
+}
+.lastMessage{
+  letter-spacing: 0.05em;
+    font-weight: 300;
+    font-size: var(--font-size-base);
+}
+.selected-chat {
+    background-color: #EAEAEA!important; /* Light grey background for selected chat */
+  }
+
 .v-list {
   background-color: #ffffff;
   border-radius: 0.24rem;
@@ -119,6 +150,7 @@ export default {
   max-width: 90%;
   white-space: nowrap;
   overflow: hidden;
+   
 }
 /* .v-list-item {
   margin-bottom: 8px;
@@ -137,6 +169,7 @@ export default {
   border-bottom: 1px solid #b4abab;
   border-radius: 0px;
   box-shadow: none;
+  border: none; 
 }
 
 
