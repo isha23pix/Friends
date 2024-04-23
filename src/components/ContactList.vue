@@ -69,14 +69,14 @@ export default {
     openChat(chat) {
       // Here you can emit an event or directly call a method in the parent component
       // to update the profile icon and name in the ChatBox component
-      console.log("Selected chat:", chat);
+      // console.log("Selected chat:", chat);
       this.$emit("update-chat-box", chat);
     },
     async getAllConversationsData() {
       await axios
         .get(`http://localhost:3000/api/friends/getMyAllConversations/2`)
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           this.chats = response.data;
         })
         .catch((error) => {

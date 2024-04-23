@@ -1,14 +1,15 @@
+
 [
     {
-      "sender": "me",
+      "sender": "friend",
       "content": "Hello there!"
     },
     {
-      "sender": "friend",
+      "sender": "me",
       "content": "Hi, how are you doing?"
     },
     {
-      "sender": "me",
+      "sender": "friend",
       "content": "I am fine. How are you?"
     }
   ]
