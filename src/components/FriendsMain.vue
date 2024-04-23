@@ -4,7 +4,7 @@
       <v-col :cols="showLeftPanel ? 4 : 0" v-if="showLeftPanel">
         <div class="left-panel">
           <v-card flat>
-            <v-toolbar class="tool" color="rgba(208, 195, 210, 0.848)" dense flat>
+            <v-toolbar class="tool" color="#F8F2FF" dense flat>
             <v-row class="fill-height" no-gutters align="center">
               <v-col cols="5" class="px-0">
                 <v-text-field

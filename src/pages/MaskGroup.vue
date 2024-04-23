@@ -7,7 +7,7 @@
       
      <!-- <MenuBar1 /> -->
      <Sidebar />
-     <v-main style="background-color: rgba(208, 195, 210, 0.848); ">
+     <v-main style="background-color: #F8F2FF; ">
   <!-- <FriendsComp/> -->
   <FriendsMain/>
 
