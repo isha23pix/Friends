@@ -45,7 +45,7 @@
         :key="index"
         :class="[
           'message',
-          content.s_id === 1  ? 'sender-message' : 'receiver-message',
+          content.s_id === content.c_id  ? 'sender-message' : 'receiver-message',
         ]"
       >
         {{ content.message }}
